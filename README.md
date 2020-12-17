@@ -36,7 +36,7 @@ $rsa = new Rsa($publicKey, $privateKey);
 $data = '';
 // $data = [];
 
-//默认：公钥加密，私钥解密
+// 默认：公钥加密，私钥解密
 $encrypt = $rsa->encrypt($data);
 $decrypt = $rsa->decrypt($encrypt);
 
