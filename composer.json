@@ -1,0 +1,34 @@
+{
+    "name": "orh/rsa",
+    "description": "The PHP RSA encrypt and decrypt",
+    "keywords": [
+        "rsa",
+        "encrypt",
+        "decrypt"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.5.0",
+        "friendsofphp/php-cs-fixer": "~2.17.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Orh\\Rsa\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Orh\\Rsa\\Test\\": "tests"
+        }
+    },
+    "authors": [
+        {
+            "name": "orh",
+            "email": "512574561@qq.com"
+        }
+    ]
+}
