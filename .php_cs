@@ -13,6 +13,7 @@ return PhpCsFixer\Config::create()
         'no_useless_return' => true,
         'php_unit_construct' => true,
         'php_unit_strict' => true,
+        'not_operator_with_successor_space' => true,
     ))
     ->setFinder(
         PhpCsFixer\Finder::create()
