@@ -2,6 +2,8 @@
 
 namespace Orh\Rsa;
 
+use Orh\Rsa\Exceptions\InvalidArgumentException;
+
 class Rsa
 {
     /**
@@ -19,7 +21,7 @@ class Rsa
     protected $privateKey = '';
 
     /**
-     * 加解密方式[public: 公钥加密，私钥解密；private: 私钥加密，公钥解密].
+     * 加解密方式 [public: 公钥加密，私钥解密；private: 私钥加密，公钥解密].
      *
      * @var string
      */
@@ -31,9 +33,7 @@ class Rsa
         $this->privateKey = Key::private($privateKey);
     }
 
-    /**
-     * 切换模式.
-     */
+    // 切换模式
     public function switchMode(): Rsa
     {
         $this->mode = 'public' == $this->mode ? 'private' : 'public';
@@ -50,6 +50,10 @@ class Rsa
      */
     public function encrypt($data)
     {
+        if (! is_string($data) || ! is_array($data)) {
+            throw new InvalidArgumentException('The encrypt data must be a string or an array.');
+        }
+
         if (is_array($data)) {
             $data = json_encode($data);
         }
@@ -70,11 +74,9 @@ class Rsa
     /**
      * 解密.
      *
-     * @param string $data
-     *
      * @return string|array
      */
-    public function decrypt($data)
+    public function decrypt(string $data)
     {
         $data = base64_decode($data);
 
