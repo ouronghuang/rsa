@@ -46,11 +46,11 @@ class Rsa
      *
      * @param string|array $data
      *
-     * @return string
+     * @throws
      */
-    public function encrypt($data)
+    public function encrypt($data): string
     {
-        if (! is_string($data) || ! is_array($data)) {
+        if (! is_string($data) && ! is_array($data)) {
             throw new InvalidArgumentException('The encrypt data must be a string or an array.');
         }
 
