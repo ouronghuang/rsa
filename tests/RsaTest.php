@@ -1,6 +1,6 @@
 <?php
 
-namespace Orh\Rsa\Test;
+namespace Orh\Rsa\Tests;
 
 use Orh\Rsa\Rsa;
 use PHPUnit\Framework\TestCase;
@@ -62,7 +62,7 @@ pCcWaTO3GgC5Kg==
     public function testUseStringByPrivate()
     {
         $rsa = new Rsa($this->publicKey, $this->privateKey);
-        $rsa->switchMode();
+        $rsa->privateMode();
 
         $data = 'This is need encrypt data.';
         $encrypt = $rsa->encrypt($data);
@@ -74,7 +74,7 @@ pCcWaTO3GgC5Kg==
     public function testUseArrayByPrivate()
     {
         $rsa = new Rsa($this->publicKey, $this->privateKey);
-        $rsa->switchMode();
+        $rsa->privateMode();
 
         $data = [
             'This',

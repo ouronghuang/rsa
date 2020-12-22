@@ -21,7 +21,7 @@ class Rsa
     protected $privateKey = '';
 
     /**
-     * 加解密方式 [public: 公钥加密，私钥解密；private: 私钥加密，公钥解密].
+     * 加/解密模式.
      *
      * @var string
      */
@@ -29,16 +29,46 @@ class Rsa
 
     public function __construct(string $publicKey, string $privateKey)
     {
-        $this->publicKey = Key::public($publicKey);
-        $this->privateKey = Key::private($privateKey);
+        $this->setKey($publicKey, $privateKey);
     }
 
-    // 切换模式
-    public function switchMode(): Rsa
+    /**
+     * 设置密钥.
+     */
+    public function setKey(string $publicKey, string $privateKey): Rsa
     {
-        $this->mode = 'public' == $this->mode ? 'private' : 'public';
+        $this->publicKey = Key::public($publicKey);
+        $this->privateKey = Key::private($privateKey);
 
         return $this;
+    }
+
+    /**
+     * 切换公钥模式: 公钥加密，私钥解密.
+     */
+    public function publicMode(): Rsa
+    {
+        $this->mode = 'public';
+
+        return $this;
+    }
+
+    /**
+     * 切换私钥模式: 私钥加密，公钥解密.
+     */
+    public function privateMode(): Rsa
+    {
+        $this->mode = 'private';
+
+        return $this;
+    }
+
+    /**
+     * 获取当前加/解密模式.
+     */
+    public function getMode(): string
+    {
+        return $this->mode;
     }
 
     /**
@@ -95,7 +125,9 @@ class Rsa
         return is_array($array) ? $array : $decrypted;
     }
 
-    // 生成签名
+    /**
+     * 生成签名.
+     */
     public function sign(string $data): string
     {
         $key = openssl_get_privatekey($this->privateKey);
@@ -106,7 +138,9 @@ class Rsa
         return base64_encode($signature);
     }
 
-    // 校验签名
+    /**
+     * 校验签名.
+     */
     public function verify(string $data, string $sign): bool
     {
         $sign = base64_decode($sign);

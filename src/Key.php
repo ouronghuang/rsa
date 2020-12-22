@@ -2,29 +2,29 @@
 
 namespace Orh\Rsa;
 
-use Orh\Rsa\Exceptions\InvalidArgumentException;
-use Orh\Rsa\Exceptions\InvalidMethodException;
-
 class Key
 {
-    public static function __callStatic(string $name, array $arguments): string
+    /**
+     * 生成公钥.
+     */
+    public static function public(string $key): string
     {
-        $name = strtolower($name);
+        return self::gen('public', $key);
+    }
 
-        if (! in_array($name, ['public', 'private'])) {
-            throw new InvalidMethodException("The method [{$name}] is not allowed.");
-        }
+    /**
+     * 生成私钥.
+     */
+    public static function private(string $key): string
+    {
+        return self::gen('private', $key);
+    }
 
-        if (! isset($arguments[0])) {
-            throw new InvalidArgumentException('The argument [key] is required.');
-        }
-
-        $key = $arguments[0];
-
-        if (! is_string($key)) {
-            throw new InvalidArgumentException('The argument [key] must be a string.');
-        }
-
+    /**
+     * 生成相应的密钥.
+     */
+    protected static function gen(string $name, string $key): string
+    {
         if (! preg_match('/^-----BEGIN/', $key)) {
             $name = strtoupper($name);
             $start = str_replace(':TYPE', $name, "-----BEGIN :TYPE KEY-----\n");
