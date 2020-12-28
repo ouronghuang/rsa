@@ -1,20 +1,23 @@
 <h1 align="center">
-    The PHP RSA encrypt and decrypt
+  The PHP RSA encrypt and decrypt
 </h1>
 
 <p align="center">
-    <a href="https://packagist.org/packages/orh/rsa">
-        <img alt="Packagist PHP Version Support" src="https://img.shields.io/packagist/php-v/orh/rsa">
-    </a>
-    <a href="https://packagist.org/packages/orh/rsa">
-        <img alt="Packagist Version" src="https://img.shields.io/packagist/v/orh/rsa?color=df8057">
-    </a>
-    <a href="https://packagist.org/packages/orh/rsa">
-        <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/orh/rsa">
-    </a>
-    <a href="https://github.com/ouronghuang/rsa">
-        <img alt="GitHub" src="https://img.shields.io/github/license/ouronghuang/rsa">
-    </a>
+  <a href="https://packagist.org/packages/orh/rsa">
+    <img alt="Packagist PHP Version Support" src="https://img.shields.io/packagist/php-v/orh/rsa">
+  </a>
+  <a href="https://packagist.org/packages/orh/rsa">
+    <img alt="Packagist Version" src="https://img.shields.io/packagist/v/orh/rsa?color=df8057">
+  </a>
+  <a href="https://packagist.org/packages/orh/rsa">
+    <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/orh/rsa">
+  </a>
+  <a href="https://github.com/ouronghuang/rsa">
+    <img alt="StyleCI build status" src="https://github.styleci.io/repos/322248801/shield?style=flat">
+  </a>
+  <a href="https://github.com/ouronghuang/rsa">
+    <img alt="GitHub" src="https://img.shields.io/github/license/ouronghuang/rsa">
+  </a>
 </p>
 
 ## 安装
